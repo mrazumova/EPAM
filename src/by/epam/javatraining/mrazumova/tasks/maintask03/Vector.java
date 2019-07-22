@@ -16,23 +16,23 @@ public class Vector {
         }
         sc.close();
 
-        //экстремальные значения (минимальный и максимальный элементы)
+        //min and max elements in array
         double max = getMax(vector), min = getMin(vector);
-        if (isThereMaxAndMin(min, max))
+        if (min!=max)
             System.out.println("Max: " + max + "\nMin: " + min);
         else
             System.out.println("Not found.");
 
-        //среднеарифметическое и среднегеометрическое значения
+        //arithmetic and geometric means of elements in array
         System.out.println("The geometric mean: " + findGeometricMean(vector) + "\nThe arithmetic mean: " + findArithmeticMean(vector));
 
-        //находятся ли все элементы вектора в упорядоченном виде
+        //Are elements sorted?
         if (isInAscendingOrder(vector) || isInDescendingOrder(vector))
             System.out.println("Sorted");
         else
             System.out.println("Not sorted");
 
-        //позиция первого встретившегося локального минимума (максимума)
+        //indexes of first local min and max
         min = getIndexOfFirstLocalMin(vector);
         max = getIndexOfFirstLocalMax(vector);
         if (min == max)
@@ -42,32 +42,33 @@ public class Vector {
             System.out.println("First local max: " + max);
         }
 
-        //линенйный и двоичный поиски
+        //linear search
         System.out.println(linearSearch(vector, 10.01));
+        //binary search
         System.out.println(binarySearch(vector, 10.01));
         System.out.println("Quick sort: " + toString(vector));
 
-        //реверсировать все элементы вектора
+        //рreverse all elements in vector
         double[] secondVector = {1, 2, 3, 4};
         reverseElementsInVector(secondVector);
         System.out.println("Reversed vector " + toString(secondVector));
 
-        //сортировка обменом или пузырьковая сортировка (bubble sort), а
-        //также её улучшенные версии; сортировка вставками (insertion sort); сортировка
-        //выбором (selection sort); сортировка слиянием (merge sort) и быстрая сортировка
-        //(quick sort).
+        //bubble sort
         double[] bubbleSortVector = {1, 78, 12, 34, 23, 91, 19, 11, 8, 3};
         bubbleSort(bubbleSortVector);
         System.out.println("Bubble sort: " + toString(bubbleSortVector));
 
+        //selection sort
         double[] selectionSortVector = {1, 78, 12, 34, 23, 91, 19, 11, 8, 3};
         selectionSort(selectionSortVector);
         System.out.println("Selection sort: " + toString(selectionSortVector));
 
+        //insertion sort
         double[] insertionSortVector = {1, 78, 12, 34, 23, 91, 19, 11, 8, 3};
         insertionSort(insertionSortVector);
         System.out.println("Insertion sort: " + toString(insertionSortVector));
 
+        //merge sort
         double[] mergeSortVector = {1, 78, 12, 34, 23, 91, 19, 11, 8, 3};
         mergeSort(mergeSortVector,0, mergeSortVector.length);
         System.out.println("Merge sort: " + toString(mergeSortVector));
@@ -148,7 +149,7 @@ public class Vector {
             }
     }
 
-    public static void quickSort(double[] vector, int left, int right){ // сортировка с выбором среднего по индексу элемента
+    public static void quickSort(double[] vector, int left, int right){
         if (left < right){
             int div = divide(vector, left, right);
             quickSort(vector, left, div - 1);
@@ -177,7 +178,7 @@ public class Vector {
 
     public static void reverseElementsInVector(double[] vector){
         int size = vector.length - 1;
-        int medium = size/2;
+        int medium = (size+1)/2;
         for(int i = 0; i < medium; ++i){
             vector[i] += vector[size - i];
             vector[size - i] = vector[i] - vector[size - i];
@@ -260,13 +261,7 @@ public class Vector {
         return Math.exp(Math.log(gm)/vector.length);
     }
 
-    public static boolean isThereMaxAndMin(double max, double min){
-        if (min == max)
-            return false;
-        return true;
-    }
-
-    private static double getMax(double[] vector){
+    public static double getMax(double[] vector){
         double max = vector[0];
         for(double element : vector){
             if (element > max)
@@ -275,7 +270,7 @@ public class Vector {
         return max;
     }
 
-    private static double getMin(double[] vector){
+    public static double getMin(double[] vector){
         double min = vector[0];
         for(double element : vector){
             if (element < min)
@@ -293,17 +288,6 @@ public class Vector {
             }
         }
         return minIndex;
-    }
-
-    private static int getMaxIndexInSegment(double[] vector, int start, int end){
-        int maxIndex = start;
-        if (start < end){
-            for (int i = start; i < end; ++i){
-                if (vector[i] > vector[maxIndex])
-                    maxIndex = i;
-            }
-        }
-        return maxIndex;
     }
 
     private static String toString(double[] vector){

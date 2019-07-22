@@ -4,18 +4,22 @@ public class Matrix {
 
     public static void main(String[] args) {
         double[][] matrix = { {1, 2, 3}, {4 , 5, 6}, {7, 8, 9}};
-        //найти экстремальные значения (минимальный и максимальный элементы)
+
+        //min and max elements in array
         double max = getMax(matrix), min = getMin(matrix);
         if (max == min)
             System.out.println("No such elements.");
         else
             System.out.println("Max: " + max + "\nMin: " + min);
-        //среднеарифметическое и среднегеометрическое значения
+
+        //arithmetic and geometric means of elements in array
         System.out.println("Geometric mean: " + findGeometricMean(matrix));
         System.out.println("Arithmetic mean: " + findArithmeticMean(matrix));
-        //является ли матрица симметричной
+
+        //Is matrix simmetric?
         System.out.println("Simmetric? " + isSimmetric(matrix));
-        //позиция первого встретившегося локального минимума (максимума)
+
+        //indexes of first local min and max
         int[] lmax = getLocalMax(matrix);
         int[] lmin = getLocalMin(matrix);
         if(lmax[0] == 0)
@@ -26,7 +30,8 @@ public class Matrix {
             System.out.println("Local min not found.");
         else
             System.out.println("Local min is: " + matrix[lmin[0]][lmin[1]]);
-        //транспонировать квадратную матрицу
+
+        //transpose matrix
         System.out.println("Transpose: ");
         transpose(matrix);
         toString(matrix);
