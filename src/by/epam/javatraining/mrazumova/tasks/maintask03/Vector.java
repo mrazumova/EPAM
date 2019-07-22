@@ -14,19 +14,23 @@ public class Vector {
             vector[i] = sc.nextDouble();
         }
         sc.close();
+
         //экстремальные значения (минимальный и максимальный элементы)
         double max = getMax(vector), min = getMin(vector);
         if (isThereMaxAndMin(min, max))
             System.out.println("Max: " + max + "\nMin: " + min);
         else
             System.out.println("Not found.");
+
         //среднеарифметическое и среднегеометрическое значения
         System.out.println("The geometric mean: " + findGeometricMean(vector) + "\nThe arithmetic mean: " + findArithmeticMean(vector));
+
         //находятся ли все элементы вектора в упорядоченном виде
         if (isInAscendingOrder(vector) || isInDescendingOrder(vector))
             System.out.println("Sorted");
         else
             System.out.println("Not sorted");
+
         //позиция первого встретившегося локального минимума (максимума)
         min = getIndexOfFirstLocalMin(vector);
         max = getIndexOfFirstLocalMax(vector);
@@ -36,13 +40,16 @@ public class Vector {
             System.out.println("First local min: " + min);
             System.out.println("First local max: " + max);
         }
+
         //линенйный и двоичный поиски
         System.out.println(linearSearch(vector, 10.01));
-        //System.out.println(binarySearch(vector, 10.01));
+        System.out.println(binarySearch(vector, 10.01));
+
         //реверсировать все элементы вектора
         double[] secondVector = {1, 2, 3, 4};
         reverseElementsInVector(secondVector);
         System.out.println("Reversed vector " + toString(secondVector));
+
         //сортировка обменом или пузырьковая сортировка (bubble sort), а
         //также её улучшенные версии; сортировка вставками (insertion sort); сортировка
         //выбором (selection sort); сортировка слиянием (merge sort) и быстрая сортировка
@@ -52,18 +59,18 @@ public class Vector {
     public static void quickSort(double[] vector, int left, int right){ // сортировка с выбором среднего по индексу элемента
         if (left < right){
             int div = divide(vector, left, right);
-            quickSort(vector, left, div);
+            quickSort(vector, left, div - 1);
             quickSort(vector, div + 1, right);
         }
     }
 
     private static int divide(double[] vector, int left, int right){
-        double element = vector[(left + right) / 2];
-        while (left <= right && right < vector.length){
-            while (vector[left] < element){
+        int mediumIndex = (left + right) / 2;
+        while (left < right && right < vector.length){
+            while (vector[left] < vector[mediumIndex]){
                 ++left;
             }
-            while (vector[right] > element) {
+            while (vector[right] > vector[mediumIndex]) {
                 --right;
             }
             if (left < right){

@@ -33,7 +33,7 @@ public class Matrix {
     }
 
     public static double getMax(double[][] matrix){
-        double max = Double.MIN_VALUE;
+        double max = matrix[0][0];
         for (int i = 0; i < matrix.length; ++i)
             for (int j = 0; j < matrix[i].length; ++j){
                 if (max < matrix[i][j])
@@ -43,7 +43,7 @@ public class Matrix {
     }
 
     public static double getMin(double[][] matrix){
-        double min = Double.MAX_VALUE;
+        double min = matrix[0][0];
         for (int i = 0; i < matrix.length; ++i)
             for (int j = 0; j < matrix[i].length; ++j){
                 if (min > matrix[i][j])
