@@ -2,6 +2,7 @@ package by.epam.javatraining.mrazumova.tasks.maintask03;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Vector {
@@ -10,7 +11,7 @@ public class Vector {
         int sizeOfVector = 25;
         double[] vector = new double[sizeOfVector];
         Scanner sc = new Scanner(new File("src\\by\\epam\\javatraining\\mrazumova\\tasks\\maintask03\\in.txt"));
-        for (int i = 0; i < 25; ++i){
+        for (int i = 0; i < sizeOfVector; ++i){
             vector[i] = sc.nextDouble();
         }
         sc.close();
@@ -44,6 +45,7 @@ public class Vector {
         //линенйный и двоичный поиски
         System.out.println(linearSearch(vector, 10.01));
         System.out.println(binarySearch(vector, 10.01));
+        System.out.println("Quick sort: " + toString(vector));
 
         //реверсировать все элементы вектора
         double[] secondVector = {1, 2, 3, 4};
@@ -54,6 +56,96 @@ public class Vector {
         //также её улучшенные версии; сортировка вставками (insertion sort); сортировка
         //выбором (selection sort); сортировка слиянием (merge sort) и быстрая сортировка
         //(quick sort).
+        double[] bubbleSortVector = {1, 78, 12, 34, 23, 91, 19, 11, 8, 3};
+        bubbleSort(bubbleSortVector);
+        System.out.println("Bubble sort: " + toString(bubbleSortVector));
+
+        double[] selectionSortVector = {1, 78, 12, 34, 23, 91, 19, 11, 8, 3};
+        selectionSort(selectionSortVector);
+        System.out.println("Selection sort: " + toString(selectionSortVector));
+
+        double[] insertionSortVector = {1, 78, 12, 34, 23, 91, 19, 11, 8, 3};
+        insertionSort(insertionSortVector);
+        System.out.println("Insertion sort: " + toString(insertionSortVector));
+
+        double[] mergeSortVector = {1, 78, 12, 34, 23, 91, 19, 11, 8, 3};
+        mergeSort(mergeSortVector,0, mergeSortVector.length);
+        System.out.println("Merge sort: " + toString(mergeSortVector));
+    }
+
+    public static void mergeSort(double[] vector, int left, int right){
+        if(left + 1 < right){
+            int medium = (left + right)/2;
+            mergeSort(vector, left, medium);
+            mergeSort(vector, medium, right);
+            merge(vector, left, medium, right);
+        }
+    }
+
+    private static void merge(double[] vector, int left, int medium, int right){
+        double copyOfLeftArray[] = Arrays.copyOfRange(vector, left, medium);
+        double copyOfRightArray[] = Arrays.copyOfRange(vector, medium, right);
+
+        int index = left, leftIndex = 0, rightIndex = 0;
+
+        while (leftIndex < copyOfLeftArray.length && rightIndex < copyOfRightArray.length) {
+            if (copyOfLeftArray[leftIndex] < copyOfRightArray[rightIndex]) {
+                vector[index] = copyOfLeftArray[leftIndex];
+                ++leftIndex;
+            }
+            else {
+                vector[index] = copyOfRightArray[rightIndex];
+                ++rightIndex;
+            }
+            ++index;
+        }
+
+        while (leftIndex < copyOfLeftArray.length) {
+            vector[index] = copyOfLeftArray[leftIndex];
+            ++leftIndex;
+            ++index;
+        }
+
+        while (rightIndex < copyOfRightArray.length) {
+            vector[index] = copyOfRightArray[rightIndex];
+            ++rightIndex;
+            ++index;
+        }
+    }
+
+    public static void bubbleSort(double[] vector){
+        int size = vector.length;
+        for(int i = 0; i < size; ++i){
+            for (int j = i; j < size; ++j){
+                if (vector[i] > vector[j]){
+                    vector[i] += vector[j];
+                    vector[j] = vector[i] - vector[j];
+                    vector[i] -= vector[j];
+                }
+            }
+        }
+    }
+
+    public static void selectionSort(double[] vector){
+        int size = vector.length;
+        for (int i = 1; i < size; ++i){
+            int minIndex = getMinIndexInSegment(vector, i, size);
+            if (vector[minIndex] < vector[i - 1]){
+                vector[i - 1] += vector[minIndex];
+                vector[minIndex] = vector[i - 1] - vector[minIndex];
+                vector[i - 1] -= vector[minIndex];
+            }
+        }
+    }
+
+    public static void insertionSort(double[] vector){
+        int size = vector.length;
+        for(int i = 1; i < size; ++i)
+            for(int j = i; vector[j - 1] > vector[j]; --j){
+                vector[j - 1] += vector[j];
+                vector[j] = vector[j - 1] - vector[j];
+                vector[j - 1] -= vector[j];
+            }
     }
 
     public static void quickSort(double[] vector, int left, int right){ // сортировка с выбором среднего по индексу элемента
@@ -175,7 +267,7 @@ public class Vector {
     }
 
     private static double getMax(double[] vector){
-        double max = Double.MIN_VALUE;
+        double max = vector[0];
         for(double element : vector){
             if (element > max)
                 max = element;
@@ -184,12 +276,34 @@ public class Vector {
     }
 
     private static double getMin(double[] vector){
-        double min = Double.MAX_VALUE;
+        double min = vector[0];
         for(double element : vector){
             if (element < min)
                 min = element;
         }
         return min;
+    }
+
+    private static int getMinIndexInSegment(double[] vector, int start, int end){
+        int minIndex = start;
+        if (start < end){
+            for (int i = start; i < end; ++i){
+                if (vector[i] < vector[minIndex])
+                    minIndex = i;
+            }
+        }
+        return minIndex;
+    }
+
+    private static int getMaxIndexInSegment(double[] vector, int start, int end){
+        int maxIndex = start;
+        if (start < end){
+            for (int i = start; i < end; ++i){
+                if (vector[i] > vector[maxIndex])
+                    maxIndex = i;
+            }
+        }
+        return maxIndex;
     }
 
     private static String toString(double[] vector){
