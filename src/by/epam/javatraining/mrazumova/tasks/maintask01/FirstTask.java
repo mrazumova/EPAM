@@ -89,7 +89,7 @@ public class FirstTask {
             geom *= n % 10;
             n = n / 10;
         }
-        System.out.println("The geometric mean: " + arifm/7 + "\nThe arithmetic mean: " + Math.exp(Math.log(geom)/7));
+        System.out.println("The geometric mean: " + Math.exp(Math.log(geom)/7) + "\nThe arithmetic mean: " + arifm/7);
     }
 
     static void task6(){
