@@ -91,18 +91,34 @@ public class VectorTest {
 
     @Test
     public void getIndexOfFirstLocalMax() {
+        double[] expected = {5, 3, 9, 1, 2};
+        Assert.assertEquals(Vector.getIndexOfFirstLocalMax(expected), 2);
     }
 
     @Test
     public void getIndexOfFirstLocalMin() {
+        double[] expected = {5, 3, 9, 1, 2};
+        Assert.assertEquals(Vector.getIndexOfFirstLocalMin(expected), 1);
     }
 
     @Test
     public void isInDescendingOrder() {
+        double[] expected = {5, 3, 9, 1, 2};
+        Assert.assertFalse(Vector.isInDescendingOrder(expected));
+        double[] expected2 = {1, 2, 3, 4, 7};
+        Assert.assertFalse(Vector.isInDescendingOrder(expected2));
+        double[] expected3 = {8, 3, 2, 1};
+        Assert.assertTrue(Vector.isInDescendingOrder(expected3));
     }
 
     @Test
     public void isInAscendingOrder() {
+        double[] expected = {5, 3, 9, 1, 2};
+        Assert.assertFalse(Vector.isInAscendingOrder(expected));
+        double[] expected2 = {1, 2, 3, 4, 7};
+        Assert.assertTrue(Vector.isInAscendingOrder(expected2));
+        double[] expected3 = {8, 3, 2, 1};
+        Assert.assertFalse(Vector.isInAscendingOrder(expected3));
     }
 
     @Test
@@ -115,9 +131,16 @@ public class VectorTest {
 
     @Test
     public void getMax() {
+        double[] expected = {1.0, 3.0, 5.0};
+        Assert.assertEquals(Vector.getMax(expected), 5.0, 0.00001);
+        double[] expected2 = {1.0, 3.0, 5.0, -5.0, -9.5, 0.7};
+        Assert.assertEquals(Vector.getMax(expected2), 5.0, 0.00001);
     }
 
     @Test
     public void getMin() {
+        double[] expected = {2.0, 0.5, 1.0, 3.0, 5.0};
+        Assert.assertNotEquals(Vector.getMin(expected), 5.0, 0.00001);
+        Assert.assertEquals(Vector.getMin(expected), 0.5, 0.00001);
     }
 }

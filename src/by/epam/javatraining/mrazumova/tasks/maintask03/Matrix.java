@@ -110,7 +110,7 @@ public class Matrix {
         return max;
     }
 
-    public static boolean compareMax(double[][] matrix, int i, int j){
+    private static boolean compareMax(double[][] matrix, int i, int j){
         if (matrix[i][j] > matrix[i-1][j-1] ||
                 matrix[i][j] > matrix[i+1][j+1] ||
                 matrix[i][j] > matrix[i+1][j-1] ||
@@ -124,7 +124,7 @@ public class Matrix {
         return false;
     }
 
-    public static boolean compareMin(double[][] matrix, int i, int j){
+    private static boolean compareMin(double[][] matrix, int i, int j){
         if (matrix[i][j] < matrix[i-1][j-1] ||
                 matrix[i][j] < matrix[i+1][j+1] ||
                 matrix[i][j] < matrix[i+1][j-1] ||

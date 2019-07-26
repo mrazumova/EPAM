@@ -142,7 +142,7 @@ public class Vector {
     public static void insertionSort(double[] vector){
         int size = vector.length;
         for(int i = 1; i < size; ++i)
-            for(int j = i; vector[j - 1] > vector[j]; --j){
+            for(int j = i; j > 0 && vector[j - 1] > vector[j]; --j){
                 vector[j - 1] += vector[j];
                 vector[j] = vector[j - 1] - vector[j];
                 vector[j - 1] -= vector[j];
