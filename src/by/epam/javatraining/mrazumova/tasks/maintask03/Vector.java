@@ -16,23 +16,23 @@ public class Vector {
         }
         sc.close();
 
-        //min and max elements in array
+        //min and max elements in array = O(n) and O(n)
         double max = getMax(vector), min = getMin(vector);
         if (min!=max)
             System.out.println("Max: " + max + "\nMin: " + min);
         else
             System.out.println("Not found.");
 
-        //arithmetic and geometric means of elements in array
+        //arithmetic and geometric means of elements in array = O(n) and O(n)
         System.out.println("The geometric mean: " + findGeometricMean(vector) + "\nThe arithmetic mean: " + findArithmeticMean(vector));
 
-        //Are elements sorted?
+        //Are elements sorted? = O(n) and O(n)
         if (isInAscendingOrder(vector) || isInDescendingOrder(vector))
             System.out.println("Sorted");
         else
             System.out.println("Not sorted");
 
-        //indexes of first local min and max
+        //indexes of first local min and max = O(n) and O(n)
         min = getIndexOfFirstLocalMin(vector);
         max = getIndexOfFirstLocalMax(vector);
         if (min == max)
@@ -42,33 +42,35 @@ public class Vector {
             System.out.println("First local max: " + max);
         }
 
-        //linear search
+        //linear search = O(n)
         System.out.println(linearSearch(vector, 10.01));
-        //binary search
+
+        //binary search = O(logn) (+ quick sort = O(nlogn))
+        quickSort(vector, 0, vector.length - 1);
         System.out.println(binarySearch(vector, 10.01));
         System.out.println("Quick sort: " + toString(vector));
 
-        //рreverse all elements in vector
+        //reverse all elements in vector = O(n)
         double[] secondVector = {1, 2, 3, 4};
         reverseElementsInVector(secondVector);
         System.out.println("Reversed vector " + toString(secondVector));
 
-        //bubble sort
+        //bubble sort = O(n*n)
         double[] bubbleSortVector = {1, 78, 12, 34, 23, 91, 19, 11, 8, 3};
         bubbleSort(bubbleSortVector);
         System.out.println("Bubble sort: " + toString(bubbleSortVector));
 
-        //selection sort
+        //selection sort = O(n*n)
         double[] selectionSortVector = {1, 78, 12, 34, 23, 91, 19, 11, 8, 3};
         selectionSort(selectionSortVector);
         System.out.println("Selection sort: " + toString(selectionSortVector));
 
-        //insertion sort
+        //insertion sort = O(n*n)
         double[] insertionSortVector = {1, 78, 12, 34, 23, 91, 19, 11, 8, 3};
         insertionSort(insertionSortVector);
         System.out.println("Insertion sort: " + toString(insertionSortVector));
 
-        //merge sort
+        //merge sort = O(n*n)
         double[] mergeSortVector = {1, 78, 12, 34, 23, 91, 19, 11, 8, 3};
         mergeSort(mergeSortVector,0, mergeSortVector.length);
         System.out.println("Merge sort: " + toString(mergeSortVector));
@@ -149,40 +151,32 @@ public class Vector {
             }
     }
 
-    public static void quickSort(double[] vector, int left, int right){
-        if (left < right){
-            int div = divide(vector, left, right);
-            quickSort(vector, left, div - 1);
-            quickSort(vector, div + 1, right);
-        }
-    }
+    public static void quickSort(double[] vector, int left, int right) {
+        int leftBorder = left, rightBorder = right;
+        int mediumIndex = (leftBorder + rightBorder) / 2;
+        do{
+            while (vector[leftBorder] < vector[mediumIndex])
+                ++leftBorder;
+            while (vector[rightBorder] > vector[mediumIndex])
+                --rightBorder;
+            if (leftBorder <= rightBorder){
+                swap(vector, leftBorder, rightBorder);
+                ++leftBorder;
+                --rightBorder;
+            }
+        } while (leftBorder < rightBorder);
 
-    private static int divide(double[] vector, int left, int right){
-        int mediumIndex = (left + right) / 2;
-        while (left < right && right < vector.length){
-            while (vector[left] < vector[mediumIndex]){
-                ++left;
-            }
-            while (vector[right] > vector[mediumIndex]) {
-                --right;
-            }
-            if (left < right){
-                vector[left] += vector[right];
-                vector[right] = vector[left] - vector[right];
-                vector[left] -= vector[right];
-                ++left; ++right;
-            }
-        }
-        return right;
+        if (left < rightBorder)
+            quickSort(vector, left, rightBorder);
+        if (leftBorder < right)
+            quickSort(vector, leftBorder, right);
     }
 
     public static void reverseElementsInVector(double[] vector){
         int size = vector.length - 1;
         int medium = (size+1)/2;
         for(int i = 0; i < medium; ++i){
-            vector[i] += vector[size - i];
-            vector[size - i] = vector[i] - vector[size - i];
-            vector[i] -= vector[size - i];
+            swap(vector, i, size - i);
         }
     }
 
@@ -195,8 +189,7 @@ public class Vector {
 
     public static boolean binarySearch(double[] vector, double key){
         int medium, left = 0, right = vector.length - 1;
-        quickSort(vector, left, right);
-        while ((left <= right)) {
+        while (left <= right) {
             medium = (left + right) / 2;
 
             if (vector[medium] == key)
@@ -295,5 +288,11 @@ public class Vector {
         for(double x : vector)
             s.append(x + " ");
         return s.toString();
+    }
+
+    private static void swap(double[] vector, int i, int j){
+        double t = vector[i];
+        vector[i] = vector[j];
+        vector[j] = t;
     }
 }

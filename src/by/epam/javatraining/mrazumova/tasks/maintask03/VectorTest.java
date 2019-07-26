@@ -57,98 +57,106 @@ public class VectorTest {
     public void quickSort() {
         double[] expected = {1, 2, 3, 4, 5, 6, 7};
         double[] actual = {2, 7, 6, 1, 3, 4, 5};
-        Vector.quickSort(actual, 0, actual.length);
+        Vector.quickSort(actual, 0, actual.length - 1);
         Assert.assertArrayEquals(expected, actual, 0.000001);
     }
 
     @Test
     public void reverseElementsInVector() {
         double[] expected = {1, 2, 3, 4, 5, 6, 7};
-        double[] expected2 = {1, 2, 3, 4, 5, 6};
         double[] actual = {7, 6, 5, 4, 3, 2, 1};
-        double[] actual2 = {6, 5, 4, 3, 2, 1};
         Vector.reverseElementsInVector(actual);
-        Vector.reverseElementsInVector(actual2);
         Assert.assertArrayEquals(expected, actual, 0.000001);
+
+        double[] expected2 = {1, 2, 3, 4, 5, 6};
+        double[] actual2 = {6, 5, 4, 3, 2, 1};
+        Vector.reverseElementsInVector(actual2);
         Assert.assertArrayEquals(expected2, actual2, 0.000001);
     }
 
     @Test
     public void linearSearch() {
-        double[] array = {1.0, 3.0, 5.0};
-        Assert.assertTrue(Vector.linearSearch(array,3.0));
-        Assert.assertFalse(Vector.linearSearch(array, 1.000001));
-        Assert.assertFalse(Vector.linearSearch(array, 200));
+        double[] actual = {1.0, 3.0, 5.0};
+        Assert.assertTrue(Vector.linearSearch(actual,3.0));
+        Assert.assertFalse(Vector.linearSearch(actual, 1.000001));
+        Assert.assertFalse(Vector.linearSearch(actual, 200));
     }
 
     @Test
     public void binarySearch() {
-        double[] array = {1.0, 3.0, 5.0};
-        Assert.assertTrue(Vector.binarySearch(array,3.0));
-        Assert.assertFalse(Vector.binarySearch(array, 1.000001));
-        Assert.assertFalse(Vector.binarySearch(array, 200));
+        double[] actual = {1.0, 3.0, 5.0};
+        Assert.assertTrue(Vector.binarySearch(actual,3.0));
+        Assert.assertFalse(Vector.binarySearch(actual, 1.000001));
+        Assert.assertFalse(Vector.binarySearch(actual, 200));
     }
 
     @Test
     public void getIndexOfFirstLocalMax() {
-        double[] expected = {5, 3, 9, 1, 2};
-        Assert.assertEquals(Vector.getIndexOfFirstLocalMax(expected), 2);
+        double[] actual = {5, 3, 9, 1, 2};
+        Assert.assertEquals(Vector.getIndexOfFirstLocalMax(actual), 2);
     }
 
     @Test
     public void getIndexOfFirstLocalMin() {
-        double[] expected = {5, 3, 9, 1, 2};
-        Assert.assertEquals(Vector.getIndexOfFirstLocalMin(expected), 1);
+        double[] actual = {5, 3, 9, 1, 2};
+        Assert.assertEquals(Vector.getIndexOfFirstLocalMin(actual), 1);
     }
 
     @Test
     public void isInDescendingOrder() {
-        double[] expected = {5, 3, 9, 1, 2};
-        Assert.assertFalse(Vector.isInDescendingOrder(expected));
-        double[] expected2 = {1, 2, 3, 4, 7};
-        Assert.assertFalse(Vector.isInDescendingOrder(expected2));
-        double[] expected3 = {8, 3, 2, 1};
-        Assert.assertTrue(Vector.isInDescendingOrder(expected3));
+        double[] actual = {5, 3, 9, 1, 2};
+        Assert.assertFalse(Vector.isInDescendingOrder(actual));
+
+        double[] actual2 = {1, 2, 3, 4, 7};
+        Assert.assertFalse(Vector.isInDescendingOrder(actual2));
+
+        double[] actual3 = {8, 3, 2, 1};
+        Assert.assertTrue(Vector.isInDescendingOrder(actual3));
     }
 
     @Test
     public void isInAscendingOrder() {
-        double[] expected = {5, 3, 9, 1, 2};
-        Assert.assertFalse(Vector.isInAscendingOrder(expected));
-        double[] expected2 = {1, 2, 3, 4, 7};
-        Assert.assertTrue(Vector.isInAscendingOrder(expected2));
-        double[] expected3 = {8, 3, 2, 1};
-        Assert.assertFalse(Vector.isInAscendingOrder(expected3));
+        double[] actual = {5, 3, 9, 1, 2};
+        Assert.assertFalse(Vector.isInAscendingOrder(actual));
+
+        double[] actual2 = {1, 2, 3, 4, 7};
+        Assert.assertTrue(Vector.isInAscendingOrder(actual2));
+
+        double[] actual3 = {8, 3, 2, 1};
+        Assert.assertFalse(Vector.isInAscendingOrder(actual3));
     }
 
     @Test
     public void findArithmeticMean() {
-        double[] expected = {5, 5, 5, 5, 5};
-        Assert.assertEquals(Vector.findArithmeticMean(expected), 5.0, 0.0001);
-        double[] expected2 = {2, 4, 6, 8};
-        Assert.assertEquals(Vector.findArithmeticMean(expected2), 5.0, 0.0001);
+        double[] actual = {5, 5, 5, 5, 5};
+        Assert.assertEquals(Vector.findArithmeticMean(actual), 5.0, 0.0001);
+
+        double[] actual2 = {2, 4, 6, 8};
+        Assert.assertEquals(Vector.findArithmeticMean(actual2), 5.0, 0.0001);
     }
 
     @Test
     public void findGeometricMean() {
-        double[] expected = {5, 5, 5, 5, 5};
-        Assert.assertEquals(Vector.findGeometricMean(expected), 5.0, 0.0001);
-        double[] expected2 = {2, 4, 8, 64};
-        Assert.assertEquals(Vector.findGeometricMean(expected2), 8.0, 0.0001);
+        double[] actual = {5, 5, 5, 5, 5};
+        Assert.assertEquals(Vector.findGeometricMean(actual), 5.0, 0.0001);
+
+        double[] actual2 = {2, 4, 8, 64};
+        Assert.assertEquals(Vector.findGeometricMean(actual2), 8.0, 0.0001);
     }
 
     @Test
     public void getMax() {
-        double[] expected = {1.0, 3.0, 5.0};
-        Assert.assertEquals(Vector.getMax(expected), 5.0, 0.00001);
-        double[] expected2 = {1.0, 3.0, 5.0, -5.0, -9.5, 0.7};
-        Assert.assertEquals(Vector.getMax(expected2), 5.0, 0.00001);
+        double[] actual = {1.0, 3.0, 5.0};
+        Assert.assertEquals(Vector.getMax(actual), 5.0, 0.00001);
+
+        double[] actual2 = {1.0, 3.0, 5.0, -5.0, -9.5, 0.7};
+        Assert.assertEquals(Vector.getMax(actual2), 5.0, 0.00001);
     }
 
     @Test
     public void getMin() {
-        double[] expected = {2.0, 0.5, 1.0, 3.0, 5.0};
-        Assert.assertNotEquals(Vector.getMin(expected), 5.0, 0.00001);
-        Assert.assertEquals(Vector.getMin(expected), 0.5, 0.00001);
+        double[] actual = {2.0, 0.5, 1.0, 3.0, 5.0};
+        Assert.assertNotEquals(Vector.getMin(actual), 5.0, 0.00001);
+        Assert.assertEquals(Vector.getMin(actual), 0.5, 0.00001);
     }
 }
