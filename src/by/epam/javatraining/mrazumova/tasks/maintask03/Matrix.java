@@ -5,21 +5,21 @@ public class Matrix {
     public static void main(String[] args) {
         double[][] matrix = { {1, 2, 3}, {4 , 5, 6}, {7, 8, 9}};
 
-        //min and max elements in array
+        //min and max elements in array = O(n*m) and O(n*m)
         double max = getMax(matrix), min = getMin(matrix);
         if (max == min)
             System.out.println("No such elements.");
         else
             System.out.println("Max: " + max + "\nMin: " + min);
 
-        //arithmetic and geometric means of elements in array
+        //arithmetic and geometric means of elements in the array = O(n*m) and O(n*m)
         System.out.println("Geometric mean: " + findGeometricMean(matrix));
         System.out.println("Arithmetic mean: " + findArithmeticMean(matrix));
 
-        //Is matrix simmetric?
+        //Is matrix simmetric? = O(n*m)
         System.out.println("Simmetric? " + isSimmetric(matrix));
 
-        //indexes of first local min and max
+        //indexes of first local min and max = O(n*m) and O(n*m)
         int[] lmax = getLocalMax(matrix);
         int[] lmin = getLocalMin(matrix);
         if(lmax[0] == 0)
@@ -31,7 +31,7 @@ public class Matrix {
         else
             System.out.println("Local min is: " + matrix[lmin[0]][lmin[1]]);
 
-        //transpose matrix
+        //transpose matrix = O(n*m)
         System.out.println("Transpose: ");
         transpose(matrix);
         toString(matrix);
@@ -66,10 +66,10 @@ public class Matrix {
     }
 
     public static double findGeometricMean(double[][] matrix){
-        double gm = 0.0;
+        double gm = 1.0;
         for(double[] arr : matrix)
             for(double element : arr)
-                gm += element;
+                gm *= element;
         return Math.exp(Math.log(gm)/(matrix.length*matrix[0].length));
     }
 
@@ -91,23 +91,6 @@ public class Matrix {
                 matrix[i][j] -= matrix[j][i];
             }
         }
-    }
-
-    public static int[] getLocalMax(double[][] matrix){
-        int[] max = new int[2];
-        boolean f = true;
-        int rows = matrix.length - 1;
-        for (int i = 1; i < rows && f; ++i){
-            int cols = matrix[i].length - 1;
-            for(int j = 1; j < cols && f; ++j){
-                if (compareMax(matrix, i, j)) {
-                    max[0] = i;
-                    max[1] = j;
-                    f = false;
-                }
-            }
-        }
-        return max;
     }
 
     private static boolean compareMax(double[][] matrix, int i, int j){
@@ -148,10 +131,28 @@ public class Matrix {
                 if(compareMin(matrix, i, j)){
                     min[0] = i;
                     min[1] = j;
+                    f = false;
                 }
             }
         }
         return min;
+    }
+
+    public static int[] getLocalMax(double[][] matrix){
+        int[] max = new int[2];
+        boolean f = true;
+        int rows = matrix.length - 1;
+        for (int i = 1; i < rows && f; ++i){
+            int cols = matrix[i].length - 1;
+            for(int j = 1; j < cols && f; ++j){
+                if (compareMax(matrix, i, j)) {
+                    max[0] = i;
+                    max[1] = j;
+                    f = false;
+                }
+            }
+        }
+        return max;
     }
 
     public static void toString(double[][] matrix){
