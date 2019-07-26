@@ -58,7 +58,7 @@ public class VectorTest {
         double[] expected = {1, 2, 3, 4, 5, 6, 7};
         double[] actual = {2, 7, 6, 1, 3, 4, 5};
         Vector.quickSort(actual, 0, actual.length);
-        //Assert.assertArrayEquals(expected, actual, 0.000001);
+        Assert.assertArrayEquals(expected, actual, 0.000001);
     }
 
     @Test
@@ -123,10 +123,18 @@ public class VectorTest {
 
     @Test
     public void findArithmeticMean() {
+        double[] expected = {5, 5, 5, 5, 5};
+        Assert.assertEquals(Vector.findArithmeticMean(expected), 5.0, 0.0001);
+        double[] expected2 = {2, 4, 6, 8};
+        Assert.assertEquals(Vector.findArithmeticMean(expected2), 5.0, 0.0001);
     }
 
     @Test
     public void findGeometricMean() {
+        double[] expected = {5, 5, 5, 5, 5};
+        Assert.assertEquals(Vector.findGeometricMean(expected), 5.0, 0.0001);
+        double[] expected2 = {2, 4, 8, 64};
+        Assert.assertEquals(Vector.findGeometricMean(expected2), 8.0, 0.0001);
     }
 
     @Test
