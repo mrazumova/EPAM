@@ -7,7 +7,7 @@ public class MobileCommunication {
     protected double costOfAdditionalMinute;
     protected double costOfAdditionalMegaB;
 
-    MobileCommunication(double monthlyCost, int sizeOfInternet, int sizeOfMinutes, double costOfAdditionalMinute, double costOfAdditionalMegaB){
+    public MobileCommunication(double monthlyCost, int sizeOfInternet, int sizeOfMinutes, double costOfAdditionalMinute, double costOfAdditionalMegaB){
         setMonthlyCost(monthlyCost);
         setSizeOfInternet(sizeOfInternet);
         setSizeOfMinutes(sizeOfMinutes);
