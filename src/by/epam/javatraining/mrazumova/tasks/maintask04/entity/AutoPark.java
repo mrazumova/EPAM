@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class AutoPark {
     private ArrayList<Auto> database;
+    private int cost;
 
     public AutoPark(){
         database = new ArrayList<>();
@@ -16,13 +17,19 @@ public class AutoPark {
 
     public void remove(Auto auto){
         database.remove(auto);
+        cost -= auto.getCost();
     }
 
     public void add(Auto auto){
         database.add(auto);
+        cost += auto.getCost();
     }
 
     public ArrayList<Auto> getDatabase() {
         return database;
+    }
+
+    public int getCost() {
+        return cost;
     }
 }

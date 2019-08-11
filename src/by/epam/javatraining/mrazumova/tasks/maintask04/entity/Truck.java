@@ -4,8 +4,8 @@ import by.epam.javatraining.mrazumova.tasks.maintask04.info.CarBrand;
 
 public class Truck extends Auto {
 
-    public Truck(int capacity, int passengerCapacity, CarBrand carBrand){
-        super(capacity, passengerCapacity, carBrand);
+    public Truck(int capacity, int passengerCapacity, CarBrand carBrand, int cost){
+        super(capacity, passengerCapacity, carBrand, cost);
     }
 
     @Override

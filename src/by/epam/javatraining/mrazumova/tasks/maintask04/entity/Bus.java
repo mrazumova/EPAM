@@ -4,8 +4,8 @@ import by.epam.javatraining.mrazumova.tasks.maintask04.info.CarBrand;
 
 public class Bus extends Car {
 
-    public Bus(int capacity, int passengerCapacity, CarBrand carBrand){
-        super(capacity, passengerCapacity, carBrand);
+    public Bus(int capacity, int passengerCapacity, CarBrand carBrand, int cost){
+        super(capacity, passengerCapacity, carBrand, cost);
     }
 
     @Override

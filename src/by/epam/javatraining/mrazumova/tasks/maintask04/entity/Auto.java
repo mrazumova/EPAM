@@ -6,12 +6,14 @@ public abstract class Auto {
     private int capacity;
     private int passengerCapacity;
     private CarBrand carBrand;
+    private int cost;
 
 
-    public Auto(int capacity, int passengerCapacity, CarBrand carBrand){
+    public Auto(int capacity, int passengerCapacity, CarBrand carBrand, int cost){
         setCapacity(capacity);
         setPassengerCapacity(passengerCapacity);
         setCarBrand(carBrand);
+        setCost(cost);
     }
 
     public abstract boolean isTruck();
@@ -27,12 +29,20 @@ public abstract class Auto {
         return sb.toString();
     }
 
+    public int getCost() {
+        return cost;
+    }
+
     public int getCapacity() {
         return capacity;
     }
 
     public int getPassengerCapacity() {
         return passengerCapacity;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 
     public void setCarBrand(CarBrand carBrand) {

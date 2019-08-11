@@ -18,6 +18,7 @@ public class Main {
         }
         autoPark.show();
         SortAutoPark.sortByCapacity(autoPark);
+        System.out.println("\nSorted by capacity: ");
         autoPark.show();
     }
 }
