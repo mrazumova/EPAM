@@ -32,7 +32,7 @@ public class TruckTaxi extends Truck {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("TruckTaxi: " + getCarBrand() + ", capacity - " + getCapacity() + ", passengers - " + getPassengerCapacity());
+        sb.append("TruckTaxi: " + getCarBrand() + ", capacity - " + getCapacity() + ", passengers - " + getPassengerCapacity() + ", cost: " + getCost());
         return sb.toString();
     }
 }

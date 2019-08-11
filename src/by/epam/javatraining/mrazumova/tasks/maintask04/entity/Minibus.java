@@ -32,7 +32,7 @@ public class Minibus extends Car {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Minibus: " + getCarBrand() + ", capacity - " + getCapacity() + ", passengers - " + getPassengerCapacity());
+        sb.append("Minibus: " + getCarBrand() + ", capacity - " + getCapacity() + ", passengers - " + getPassengerCapacity()+ ", cost: " + getCost());
         return sb.toString();
     }
 }

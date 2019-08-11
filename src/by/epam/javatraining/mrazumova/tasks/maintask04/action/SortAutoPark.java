@@ -24,4 +24,38 @@ public class SortAutoPark {
             }
         });
     }
+
+    public static void sortByCost(AutoPark autoPark){
+        autoPark.getDatabase().sort(new Comparator<Auto>() {
+            @Override
+            public int compare(Auto o1, Auto o2) {
+                return o1.getCost() - o2.getCost();
+            }
+        });
+    }
+
+    public static void sortByBrand(AutoPark autoPark){
+        autoPark.getDatabase().sort(new Comparator<Auto>() {
+            @Override
+            public int compare(Auto o1, Auto o2) {
+                return o1.getCarBrand().compareTo(o2.getCarBrand());
+            }
+        });
+    }
+
+    public static void sortByManyParameters(AutoPark autoPark, boolean sortByCapasity, boolean sortByPassengerCapacity,
+                                            boolean sortByCarBrand, boolean sortByCost){
+        if (sortByCapasity){
+            SortAutoPark.sortByCapacity(autoPark);
+        }
+        if (sortByPassengerCapacity){
+            SortAutoPark.sortByPassengerCapacity(autoPark);
+        }
+        if (sortByCarBrand){
+            SortAutoPark.sortByBrand(autoPark);
+        }
+        if (sortByCost){
+            SortAutoPark.sortByCost(autoPark);
+        }
+    }
 }

@@ -32,7 +32,7 @@ public class Bus extends Car {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Bus: " + getCarBrand() + ", capacity - " + getCapacity() + ", passengers - " + getPassengerCapacity());
+        sb.append("Bus: " + getCarBrand() + ", capacity - " + getCapacity() + ", passengers - " + getPassengerCapacity()+ ", cost: " + getCost());
         return sb.toString();
     }
 }

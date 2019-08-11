@@ -32,7 +32,7 @@ public class Taxi extends Car {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Taxi: " + getCarBrand() + ", capacity - " + getCapacity() + ", passengers - " + getPassengerCapacity());
+        sb.append("Taxi: " + getCarBrand() + ", capacity - " + getCapacity() + ", passengers - " + getPassengerCapacity()+ ", cost: " + getCost());
         return sb.toString();
     }
 }
