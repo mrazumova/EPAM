@@ -22,13 +22,6 @@ public abstract class Auto {
         return carBrand;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Auto: " + getCarBrand() + ", capacity - " + getCapacity() + ", passengers - " + getPassengerCapacity());
-        return sb.toString();
-    }
-
     public int getCost() {
         return cost;
     }

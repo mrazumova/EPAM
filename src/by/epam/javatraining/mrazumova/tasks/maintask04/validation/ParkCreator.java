@@ -18,24 +18,26 @@ public class ParkCreator {
         int capacity;
         int passengers;
         String brand;
+        int cost;
         while (sc.hasNext()){
             type = sc.next();
             capacity = sc.nextInt();
             passengers = sc.nextInt();
             brand = sc.next();
-            if (ValidateAuto.validate(type, capacity, passengers, brand)){
+            cost = sc.nextInt();
+            if (ValidateAuto.validate(type, capacity, passengers, brand, cost)){
                 switch (TypeOfCar.valueOf(type)){
                     case BUS:
-                        autoPark.add(new Bus(capacity, passengers, CarBrand.valueOf(brand)));
+                        autoPark.add(new Bus(capacity, passengers, CarBrand.valueOf(brand), cost));
                         break;
                     case MINIBUS:
-                        autoPark.add(new Minibus(capacity, passengers, CarBrand.valueOf(brand)));
+                        autoPark.add(new Minibus(capacity, passengers, CarBrand.valueOf(brand), cost));
                         break;
                     case TAXI:
-                        autoPark.add(new Taxi(capacity, passengers, CarBrand.valueOf(brand)));
+                        autoPark.add(new Taxi(capacity, passengers, CarBrand.valueOf(brand), cost));
                         break;
                     case TRUCKTAXI:
-                        autoPark.add(new TruckTaxi(capacity, passengers, CarBrand.valueOf(brand)));
+                        autoPark.add(new TruckTaxi(capacity, passengers, CarBrand.valueOf(brand), cost));
                         break;
                 }
             }

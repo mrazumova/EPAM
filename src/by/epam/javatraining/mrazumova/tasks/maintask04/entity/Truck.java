@@ -12,11 +12,4 @@ public class Truck extends Auto {
     public boolean isTruck() {
         return true;
     }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Truck: " + getCarBrand() + ", capacity - " + getCapacity() + ", passengers - " + getPassengerCapacity());
-        return sb.toString();
-    }
 }

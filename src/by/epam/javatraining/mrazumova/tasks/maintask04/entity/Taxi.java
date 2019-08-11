@@ -9,6 +9,27 @@ public class Taxi extends Car {
     }
 
     @Override
+    public int hashCode() {
+        return this.getCost() + this.getPassengerCapacity()*183 + this.getCapacity();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (obj == null || obj.getClass() != this.getClass())
+            return false;
+        Taxi bus = (Taxi) obj;
+        if (bus.getCapacity() == this.getCapacity() &&
+                bus.getPassengerCapacity() == this.getPassengerCapacity() &&
+                bus.getCarBrand().equals(this.getCarBrand()) &&
+                bus.getCost() == this.getCost())
+            return true;
+        return false;
+
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Taxi: " + getCarBrand() + ", capacity - " + getCapacity() + ", passengers - " + getPassengerCapacity());
