@@ -9,6 +9,11 @@ public class AutoPark {
         database = new ArrayList<>();
     }
 
+    public void show(){
+        for(Auto auto : database)
+            System.out.println(auto.toString());
+    }
+
     public void remove(Auto auto){
         database.remove(auto);
     }

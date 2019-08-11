@@ -8,7 +8,7 @@ public class ValidateAuto {
 
     private ValidateAuto(){}
 
-    public static boolean validate(String type, double capacity, int passengerCapacity, String carBrand){
+    public static boolean validate(String type, int capacity, int passengerCapacity, String carBrand){
         boolean isData = true;
         if(capacity < 0){
             System.out.println("Capacity should be more than 0.");
@@ -22,7 +22,7 @@ public class ValidateAuto {
             TypeOfCar.valueOf(type);
         }
         catch (Exception e){
-            System.out.println("Incorrect typeof car.");
+            System.out.println("Incorrect type of car.");
             isData = false;
         }
         try{

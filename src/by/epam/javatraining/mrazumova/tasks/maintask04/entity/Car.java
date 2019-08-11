@@ -4,7 +4,7 @@ import by.epam.javatraining.mrazumova.tasks.maintask04.info.CarBrand;
 
 public class Car extends Auto{
 
-    public Car(double capacity, int passengerCapacity, CarBrand carBrand){
+    public Car(int capacity, int passengerCapacity, CarBrand carBrand){
         super(capacity, passengerCapacity, carBrand);
     }
 

@@ -3,12 +3,12 @@ package by.epam.javatraining.mrazumova.tasks.maintask04.entity;
 import by.epam.javatraining.mrazumova.tasks.maintask04.info.CarBrand;
 
 public abstract class Auto {
-    private double capacity;
+    private int capacity;
     private int passengerCapacity;
     private CarBrand carBrand;
 
 
-    public Auto(double capacity, int passengerCapacity, CarBrand carBrand){
+    public Auto(int capacity, int passengerCapacity, CarBrand carBrand){
         setCapacity(capacity);
         setPassengerCapacity(passengerCapacity);
         setCarBrand(carBrand);
@@ -20,7 +20,14 @@ public abstract class Auto {
         return carBrand;
     }
 
-    public double getCapacity() {
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Auto: " + getCarBrand() + ", capacity - " + getCapacity() + ", passengers - " + getPassengerCapacity());
+        return sb.toString();
+    }
+
+    public int getCapacity() {
         return capacity;
     }
 
@@ -32,7 +39,7 @@ public abstract class Auto {
         this.carBrand = carBrand;
     }
 
-    public void setCapacity(double capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 

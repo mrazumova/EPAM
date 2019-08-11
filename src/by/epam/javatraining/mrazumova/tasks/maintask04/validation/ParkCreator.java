@@ -15,12 +15,12 @@ public class ParkCreator {
     public static void createPark(File file, AutoPark autoPark) throws FileNotFoundException {
         Scanner sc = new Scanner(file);
         String type;
-        double capacity;
+        int capacity;
         int passengers;
         String brand;
         while (sc.hasNext()){
             type = sc.next();
-            capacity = sc.nextDouble();
+            capacity = sc.nextInt();
             passengers = sc.nextInt();
             brand = sc.next();
             if (ValidateAuto.validate(type, capacity, passengers, brand)){

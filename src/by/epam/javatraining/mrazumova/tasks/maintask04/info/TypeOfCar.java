@@ -1,10 +1,10 @@
 package by.epam.javatraining.mrazumova.tasks.maintask04.info;
 
 public enum TypeOfCar {
-    BUS("bus"),
-    MINIBUS("minibus"),
-    TAXI("taxi"),
-    TRUCKTAXI("trucktaxi");
+    BUS("BUS"),
+    MINIBUS("MINIBUS"),
+    TAXI("TAXI"),
+    TRUCKTAXI("TRUCKTAXI");
 
     private String type;
 
