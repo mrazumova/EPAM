@@ -2,7 +2,7 @@ package by.epam.javatraining.mrazumova.tasks.maintask04.entity;
 
 import by.epam.javatraining.mrazumova.tasks.maintask04.info.CarBrand;
 
-public abstract class Auto {
+public abstract class Auto implements Comparable {
     private int capacity;
     private int passengerCapacity;
     private CarBrand carBrand;
@@ -14,6 +14,13 @@ public abstract class Auto {
         setPassengerCapacity(passengerCapacity);
         setCarBrand(carBrand);
         setCost(cost);
+    }
+
+    public Auto(Auto a){
+        setCapacity(a.getCapacity());
+        setPassengerCapacity(a.getPassengerCapacity());
+        setCarBrand(a.getCarBrand());
+        setCost(a.getCost());
     }
 
     public abstract boolean isTruck();
@@ -48,5 +55,27 @@ public abstract class Auto {
 
     public void setPassengerCapacity(int passengerCapacity) {
         this.passengerCapacity = passengerCapacity;
+    }
+
+    public void swap(Auto a1){
+        int cap = a1.capacity;
+        int passCap = a1.passengerCapacity;
+        CarBrand cb = a1.carBrand;
+        int co = a1.cost;
+
+        a1.setCapacity(this.getCapacity());
+        a1.setPassengerCapacity(this.getPassengerCapacity());
+        a1.setCarBrand(this.getCarBrand());
+        a1.setCost(this.getCost());
+
+        this.setCapacity(cap);
+        this.setPassengerCapacity(passCap);
+        this.setCarBrand(cb);
+        this.setCost(co);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.getCarBrand().compareTo(((Auto) o).getCarBrand());
     }
 }

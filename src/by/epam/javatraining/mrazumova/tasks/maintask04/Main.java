@@ -17,8 +17,9 @@ public class Main {
             System.out.println("Incorrect file path.");
         }
         autoPark.show();
-        SortAutoPark.sortByBrand(autoPark);
-        System.out.println("\nSorted by capacity: ");
+        SortAutoPark.MySort(autoPark);
+        //SortAutoPark.sortByBrand(autoPark);
+        System.out.println("\nSorted by car brand: ");
         autoPark.show();
     }
 }
