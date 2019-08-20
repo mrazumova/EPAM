@@ -60,7 +60,7 @@ public class SortAutoPark {
             SortAutoPark.sortByCost(autoPark);
         }
     }
-    public static void MySort(AutoPark autoPark){
+    public static void mySort(AutoPark autoPark){
         int size = autoPark.getDatabase().size() - 1;
         for(int i = 1; i < size; ++i){
             int minIndex = getMinIndex(autoPark.getDatabase(), i);

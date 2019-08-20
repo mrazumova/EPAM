@@ -1,5 +1,6 @@
 package by.epam.javatraining.mrazumova.tasks.maintask04.validation;
 
+import by.epam.javatraining.mrazumova.tasks.maintask04.exception.*;
 import by.epam.javatraining.mrazumova.tasks.maintask04.entity.*;
 import by.epam.javatraining.mrazumova.tasks.maintask04.info.CarBrand;
 import by.epam.javatraining.mrazumova.tasks.maintask04.info.TypeOfCar;
@@ -25,7 +26,8 @@ public class ParkCreator {
             passengers = sc.nextInt();
             brand = sc.next();
             cost = sc.nextInt();
-            if (ValidateAuto.validate(type, capacity, passengers, brand, cost)){
+            try{
+                ValidateAuto.validate(type, capacity, passengers, brand, cost);
                 switch (TypeOfCar.valueOf(type)){
                     case BUS:
                         autoPark.add(new Bus(capacity, passengers, CarBrand.valueOf(brand), cost));
@@ -40,6 +42,9 @@ public class ParkCreator {
                         autoPark.add(new TruckTaxi(capacity, passengers, CarBrand.valueOf(brand), cost));
                         break;
                 }
+            }
+            catch (ValidationException e){
+               e.printStackTrace();
             }
         }
     }
